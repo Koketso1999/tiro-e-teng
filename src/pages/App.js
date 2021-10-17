@@ -7,6 +7,7 @@ import Login from "./login";
 import Signup from "./signup";
 import Home from "./home";
 import Landing from "./landing";
+import ErrorBoundary from "../utils/ErrorBoundary";
 
 const theme = createMuiTheme()
 
@@ -14,19 +15,24 @@ function App() {
     const [firebaseInitialized, setFirebaseInitialized] = useState(false)
 
 
-    return firebaseInitialized !== false ? (
+    return (
+        //firebaseInitialized !== false ?
+
         <MuiThemeProvider theme={theme}>
-            <CssBaseline/>
-            <Router>
-                <Switch>
-                    <Route exact path="/" component={Landing}/>
-                    <Route exact path="/login" component={Login}/>
-                    <Route exact path="/register" component={Signup}/>
-                    <Route exact path="/home" component={Home}/>
-                </Switch>
-            </Router>
+            <ErrorBoundary>
+                <CssBaseline/>
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={Landing}/>
+                        <Route exact path="/login" component={Login}/>
+                        <Route exact path="/register" component={Signup}/>
+                        <Route exact path="/home" component={Home}/>
+                    </Switch>
+                </Router>
+            </ErrorBoundary>
         </MuiThemeProvider>
-    ) : <div id="loader"><CircularProgress/></div>;
+    )
+    //: <div id="loader"><CircularProgress/></div>;
 }
 
 export default App;
