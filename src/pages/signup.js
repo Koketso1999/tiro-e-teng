@@ -1,8 +1,11 @@
 import React from 'react';
+import FormSignUp from './sign up components/FormSignUp';
 
 function Signup(props) {
     return (
-        <div>Sign Up</div>
+        <div>
+            <FormSignUp></FormSignUp>
+        </div>
     );
 }
 
