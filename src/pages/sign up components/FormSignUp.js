@@ -1,39 +1,66 @@
 import React from 'react'
+import {
+    Button,
+    Typography,
+    AppBar,
+    Toolbar,
+    Container,
+    Box,
+    FormControl,
+    Input,
+    InputLabel
+  } from "@material-ui/core";
 
 const FormSignUp = () => {
     return (
-        <div>
-            <form className='form' >
-            <h1>Create Account By Filling In the Details</h1>
-            <div className='form-inputs'>
-                <label id='username' htmlFor='username' className='form-label'>
-                    Full Name
-                </label>
-                <input type='text' className='form-input' name='fullname' placeholder='Enter Full Name' />
-                {}
+        <>
+           <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>    
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Tiroeng
+          </Typography>    
+        </Toolbar>
+      </AppBar>
+    </Box>
+
+        <main className='main'>
+            <div>
+                <Container>
+                <Typography component="h1" variant="h5" marginTop='100px' >
+                    Create Account
+                </Typography>
+                <form className='form' type='submit'>
+                <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="username">Username</InputLabel>
+                        <Input type='text' id="username" name="username" autoComplete="off" />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="email">Email Adress</InputLabel>
+                        <Input type='email' id="email" name="email" autoComplete="off" />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <Input type='password' id="password" name="password" autoComplete="off" />
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="password2">Confirm Password</InputLabel>
+                        <Input type='password' id="password2" name="password2" autoComplete="off" />
+                    </FormControl>
+                    <Button
+                        type="submit"                  
+                        variant="contained"
+                        color="primary"
+                        className='button'>
+                        Sign Up
+                    </Button>
+                </form>
+                </Container>
             </div>
-            <div className='form-inputs'>
-                <label id='username'  htmlFor='email' className='form-label'>
-                   Email adress
-                </label>
-                 <input type='email' className='email-input' name='email' placeholder='Enter Email' />
-            </div>
-            <div className='form-inputs'>
-                <label id='password'  htmlFor='password' className='form-label'>
-                   Password
-                </label>
-                 <input type='password' className='password-input' name='password' placeholder='Enter Password' />
-            </div>
-            <div className='form-inputs'>
-                <label id='password2'  htmlFor='password2' className='form-label'>
-                   Confirm Password
-                </label>
-                 <input type='password' className='password2-input' name='password2' placeholder='Confirm Password' />
-            </div>
-            <button className='form-input-button' type='submit'>Sign Up</button>
-            <span className='form-input-login'>Already Have An Account? Login <a href='#'>here</a></span>
-           </form>
-        </div>
+        </main>
+
+        </>
+            
     )
 }
 

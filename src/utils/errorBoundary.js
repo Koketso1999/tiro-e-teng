@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../css/ErrorBoundary.less';
+import '../css/errorBoundary.less';
 import {Button, Result} from 'antd';
 
 class ErrorBoundary extends Component {
