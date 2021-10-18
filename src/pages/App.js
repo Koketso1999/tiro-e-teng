@@ -7,7 +7,8 @@ import Login from "./login";
 import Signup from "./signup";
 import Home from "./home";
 import Landing from "./landing";
-import ErrorBoundary from "../utils/ErrorBoundary";
+//fixed naming error
+import ErrorBoundary from "../utils/errorBoundary";
 
 const theme = createMuiTheme()
 
