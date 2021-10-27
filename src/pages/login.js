@@ -78,6 +78,16 @@ function Login(props) {
                         onFailure={onFailure}
                         cookiePolicy={'single_host_origin'}
                     />
+                     <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="secondary"
+                        className='button'
+                        // onClick={() => signInWithPopup()}
+                        >
+                        Facebook
+                    </Button>
                 </form>
             </Paper>
         </main>
