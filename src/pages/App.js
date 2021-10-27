@@ -17,6 +17,7 @@ function App() {
 
 
     return (
+
         //firebaseInitialized !== false ?
 
         <MuiThemeProvider theme={theme}>
