@@ -1,32 +1,24 @@
 import React, {useState} from 'react';
 import {
     Avatar, Button, FormControl,
-    Input, InputLabel, Link, Paper, Typography
+    Input, InputLabel, Paper, Typography
 } from "@material-ui/core";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import {GoogleLogin} from 'react-google-login';
-import {refreshTokenSetup} from "../utils/refreshToken";
+import {FacebookLoginButton, GoogleLoginButton, LinkedInLoginButton} from "react-social-login-buttons";
+import {signInFb, signInGoogle, signInUser} from "../constants/config/firebase";
+import { Link, withRouter } from 'react-router-dom'
+
 
 
 function Login(props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const onSuccess = (res) => {
-        console.log('[Login Success] currentUser:', res.profileObj)
-        refreshTokenSetup(res)
+    const handleOnFbSignIn = () => {
+        signInFb().then(r => console.log(8, "done"))
     }
-    const onFailure = (res) => {
-        console.log('[Login Failed] res:', res)
-    }
-
-    function handleGoogleLogin() {
-        loginWithGoogle()
-            .catch(function (error) {
-                alert(error); // or show toast
-                localStorage.removeItem(firebaseAuthKey);
-            });
-        localStorage.setItem(firebaseAuthKey, "1");
+    const handleOnGoogleSignIn = () => {
+        signInGoogle().then(r => console.log(8, "done"))
     }
 
     return (
@@ -58,7 +50,6 @@ function Login(props) {
                         Sign in
                     </Button>
                     <Button
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="secondary"
@@ -70,37 +61,29 @@ function Login(props) {
                     <Typography>
                         or
                     </Typography>
-                    <GoogleLogin
-                        fullWidth
-                        clientId="967108240725-u1q2197n0rb75qevr0b2dj108h71sefk.apps.googleusercontent.com"
-                        buttonText="Login"
-                        onSuccess={onSuccess}
-                        onFailure={onFailure}
-                        cookiePolicy={'single_host_origin'}
+                    <FacebookLoginButton
+                        onClick={() => handleOnFbSignIn()}
                     />
-                     <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="secondary"
-                        className='button'
-                        // onClick={() => signInWithPopup()}
-                        >
-                        Facebook
-                    </Button>
+
+                    <GoogleLoginButton
+                        onClick={() => handleOnGoogleSignIn()}
+                    />
+                    <LinkedInLoginButton
+                        onClick={() => handleOnGoogleSignIn()}
+                    />
                 </form>
             </Paper>
         </main>
     )
 
-    /*async function login() {
+    async function login() {
         try {
-            await firebase.login(email, password)
+            await signInUser(email, password)
             props.history.replace('/dashboard')
         } catch(error) {
             alert(error.message)
         }
-    }*/
+    }
 }
 
 export default Login;
